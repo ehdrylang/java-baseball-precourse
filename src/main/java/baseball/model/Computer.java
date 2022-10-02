@@ -27,18 +27,30 @@ public class Computer {
 
     public String play(int[] numberToTry) {
         StringBuilder sb = new StringBuilder();
-        int ballCount = getBallCount(numberToTry);
-        if (ballCount > 0) {
-            sb.append(ballCount).append(BALL);
-        }
-        int strikeCount = getStrikeCount(numberToTry);
-        if (strikeCount > 0) {
-            sb.append(" ").append(strikeCount).append(STRIKE);
-        }
-        if (ballCount == 0 && strikeCount == 0) {
+        String ball = checkBall(numberToTry);
+        sb.append(ball).append(" ");
+        String strike = checkStrike(numberToTry);
+        sb.append(strike);
+        if (ball.isEmpty() && strike.isEmpty()) {
             return NOTHING;
         }
         return sb.toString().trim();
+    }
+
+    private String checkStrike(int[] numberToTry) {
+        int strikeCount = getStrikeCount(numberToTry);
+        if (strikeCount > 0) {
+            return strikeCount + STRIKE;
+        }
+        return "";
+    }
+
+    private String checkBall(int[] numberToTry) {
+        int ballCount = getBallCount(numberToTry);
+        if (ballCount > 0) {
+            return ballCount + BALL;
+        }
+        return "";
     }
 
     private int getBallCount(int[] numberToTry) {
