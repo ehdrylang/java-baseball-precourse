@@ -52,4 +52,13 @@ public class UserNumber {
     public String getInput() {
         return input;
     }
+
+    public int[] getUserNumber() {
+        int[] result = new int[input.length()];
+        char[] chars = input.toCharArray();
+        for (int i = 0; i < input.length(); i++) {
+            result[i] = Character.getNumericValue(chars[i]);
+        }
+        return result;
+    }
 }
