@@ -6,7 +6,11 @@ import baseball.model.UserNumber;
 import baseball.view.Viewer;
 
 public class BaseballGame {
-    private Viewer viewer;
+    private static final String CONTINUE = "1";
+    private static final String EXIT = "2";
+    private static final String ALL_STRIKE = "3스트라이크";
+
+    private final Viewer viewer;
     private Computer computer;
     private ExitStatus exitStatus;
 
@@ -27,13 +31,13 @@ public class BaseballGame {
     }
 
     private void isValidInputForExit(String input) {
-        if (!("1".equals(input) || "2".equals(input))) {
+        if (!(CONTINUE.equals(input) || EXIT.equals(input))) {
             throw new IllegalArgumentException();
         }
     }
 
     private ExitStatus checkTerminationCondition(String condition) {
-        if ("1".equals(condition)) {
+        if (CONTINUE.equals(condition)) {
             reset();
             return ExitStatus.CONTINUE;
         }
@@ -55,6 +59,6 @@ public class BaseballGame {
     }
 
     private boolean isAllStrike(String hint) {
-        return "3스트라이크".equals(hint);
+        return ALL_STRIKE.equals(hint);
     }
 }
