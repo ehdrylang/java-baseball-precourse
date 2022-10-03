@@ -21,10 +21,6 @@ public class Computer {
         return a == b ? 1 : 0;
     }
 
-    public int[] getNumbers() {
-        return numbers;
-    }
-
     public String play(int[] numberToTry) {
         StringBuilder sb = new StringBuilder();
         String ball = checkBall(numberToTry);
